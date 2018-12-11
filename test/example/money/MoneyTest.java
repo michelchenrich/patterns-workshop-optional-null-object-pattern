@@ -28,17 +28,45 @@ public class MoneyTest {
     }
 
     @Test
-    public void addingOneEuroToOneDollarResultsInThreeDollars() {
-        assertEquals(Money.of(3.0, "USD"),
-                     Money.of(1.0, "USD")
-                          .plus(Money.of(1.0, "EUR")));
+    public void oneDollarPlusOneDollarIsTwoDollars() {
+        assertEquals(Money.of(2.0, "USD"),
+                     Money.of(1.0, "USD").plus(Money.of(1.0, "USD")));
     }
 
     @Test
-    public void addingOneDollarToOneEuroResultsInOneAndAHalfEuro() {
+    public void twoDollarsMinusOneDollarIsOneDollar() {
+        assertEquals(Money.of(1.0, "USD"),
+                     Money.of(2.0, "USD").minus(Money.of(1.0, "USD")));
+    }
+
+    @Test
+    public void oneDollarMinusOneDollarIsZero() {
+        assertEquals(Money.ZERO,
+                     Money.of(1.0, "USD").minus(Money.of(1.0, "USD")));
+    }
+
+    @Test
+    public void oneDollarPlusOneEuroIsThreeDollars() {
+        assertEquals(Money.of(3.0, "USD"),
+                     Money.of(1.0, "USD").plus(Money.of(1.0, "EUR")));
+    }
+
+    @Test
+    public void oneEuroPlusOneDollarIsOneAndAHalfEuro() {
         assertEquals(Money.of(1.5, "EUR"),
-                     Money.of(1.0, "EUR")
-                          .plus(Money.of(1.0, "USD")));
+                     Money.of(1.0, "EUR").plus(Money.of(1.0, "USD")));
+    }
+
+    @Test
+    public void threeDollarMinusOneEuroIsOneDollars() {
+        assertEquals(Money.of(1.0, "USD"),
+                     Money.of(3.0, "USD").minus(Money.of(1.0, "EUR")));
+    }
+
+    @Test
+    public void oneEuroMinusOneDollarIsHalfAnEuro() {
+        assertEquals(Money.of(0.5, "EUR"),
+                     Money.of(1.0, "EUR").minus(Money.of(1.0, "USD")));
     }
 
     @Test
@@ -51,17 +79,5 @@ public class MoneyTest {
     public void oneDollarMinusZeroIsOneDollar() {
         assertEquals(Money.of(1.0, "USD"),
                      Money.of(1.0, "USD").minus(Money.ZERO));
-    }
-
-    @Test
-    public void zeroPlusOneDollarIsOneDollar() {
-        assertEquals(Money.of(1.0, "USD"),
-                     Money.ZERO.plus(Money.of(1.0, "USD")));
-    }
-
-    @Test
-    public void zeroMinusOneDollarIsMinusOneDollar() {
-        assertEquals(Money.of(-1.0, "USD"),
-                     Money.ZERO.minus(Money.of(1.0, "USD")));
     }
 }

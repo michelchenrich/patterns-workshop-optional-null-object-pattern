@@ -20,16 +20,8 @@ public interface Money {
 
     Money ZERO = NoMoney.INSTANCE;
 
-    static Money of(double rawAmount, Currency currency) {
-        return of(BigDecimal.valueOf(rawAmount), currency);
-    }
-
     static Money of(double rawAmount, String currencyCode) {
         return of(BigDecimal.valueOf(rawAmount), Currency.get(currencyCode));
-    }
-
-    static Money of(BigDecimal amount, String currencyCode) {
-        return of(amount, Currency.get(currencyCode));
     }
 
     static Money of(BigDecimal amount, Currency currency) {

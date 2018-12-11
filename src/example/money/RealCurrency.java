@@ -1,15 +1,14 @@
 package example.money;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Map;
 
-class PhysicalCurrency implements Currency {
+class RealCurrency implements Currency {
     private String code;
     private Map<String, BigDecimal> conversionRates = new HashMap<>();
 
-    PhysicalCurrency(String code) {
+    RealCurrency(String code) {
         this.code = code;
     }
 
@@ -18,7 +17,7 @@ class PhysicalCurrency implements Currency {
     }
 
     public BigDecimal getConversionRateTo(Currency other) {
-        return conversionRates.getOrDefault(other.getCode(), BigDecimal.ZERO);
+        return conversionRates.getOrDefault(other.getCode(), BigDecimal.ONE);
     }
 
     public void setConversionRateTo(Currency other, BigDecimal rate) {

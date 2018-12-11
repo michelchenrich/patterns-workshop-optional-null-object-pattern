@@ -28,5 +28,9 @@ enum NoMoney implements Money {
     public BigDecimal getAmount() {
         return BigDecimal.ZERO;
     }
+
+    public String toString() {
+        return "0.00";
+    }
 }
 
