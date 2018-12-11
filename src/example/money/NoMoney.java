@@ -29,3 +29,4 @@ enum NoMoney implements Money {
         return BigDecimal.ZERO;
     }
 }
+

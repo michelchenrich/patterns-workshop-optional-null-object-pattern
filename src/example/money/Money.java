@@ -3,6 +3,21 @@ package example.money;
 import java.math.BigDecimal;
 
 public interface Money {
+
+    Money plus(Money addend);
+
+    Money minus(Money subtrahend);
+
+    Money toNegative();
+
+    Money convertToCurrency(Currency currency);
+
+    Currency getCurrency();
+
+    BigDecimal getAmount();
+
+    // ...
+
     Money ZERO = NoMoney.INSTANCE;
 
     static Money of(double rawAmount, Currency currency) {
@@ -22,16 +37,4 @@ public interface Money {
                ZERO :
                new MoneyInCurrency(amount, currency);
     }
-
-    Money plus(Money addend);
-
-    Money minus(Money subtrahend);
-
-    Money toNegative();
-
-    Money convertToCurrency(Currency currency);
-
-    Currency getCurrency();
-
-    BigDecimal getAmount();
 }
