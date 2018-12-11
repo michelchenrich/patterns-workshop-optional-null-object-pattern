@@ -50,7 +50,7 @@ public class Main {
                                   LocalDate date) {
         return personRepository.findByUuid(personUuid)
                                .flatMap(p -> p.getEmployment(employer, date))
-                               .map(Employment::getAnnualSalary)
+                               .map(e -> e.getAnnualSalary())
                                .orElse(Money.ZERO);
     }
 
